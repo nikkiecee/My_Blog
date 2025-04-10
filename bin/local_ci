@@ -1,0 +1,14 @@
+
+set -e
+
+echo "🔍 scan_ruby: Running security/static analysis on Ruby files..."
+bundle exec brakeman
+
+echo "🧼 lint: Checking Ruby code style with RuboCop..."
+bundle exec rubocop
+
+echo "🧪 test: Running tests..."
+bundle exec rspec
+
+echo "🔍 scan_js: Running ESLint on JavaScript files..."
+npx eslint app/javascript

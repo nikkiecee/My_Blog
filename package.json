@@ -1,0 +1,22 @@
+{
+  "name": "blog",
+  "private": true,
+  "dependencies": {
+    "@rails/actioncable": "^6.0.0",
+    "@rails/activestorage": "^6.0.0",
+    "@rails/ujs": "^6.0.0",
+    "turbolinks": "^5.2.0"
+  },
+  "version": "1.0.0",
+
+  "scripts": {
+    "scan:js": "eslint app/javascript",
+    "lint": "eslint app/javascript",
+   "test": "eslint ."
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.24.0",
+    "eslint": "^9.24.0",
+    "globals": "^16.0.0"
+  }
+}
