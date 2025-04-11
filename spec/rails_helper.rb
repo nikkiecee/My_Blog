@@ -30,7 +30,8 @@ require 'rspec/rails'
 begin
   ActiveRecord::Migration.maintain_test_schema!
 rescue ActiveRecord::PendingMigrationError => e
-  abort e.to_s.strip
+  abort e.to_s.strip if e.is_a?(String) && e.present?
+  abort e.to_s if e.nil? || !e.is_a?(String)
 end
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures

@@ -6,6 +6,6 @@ class Comment < ApplicationRecord
   private
 
   def strip_content
-    self.content = content.strip if content.present?
+    self.content = content.strip if content.is_a?(String) && content.present?
   end
 end

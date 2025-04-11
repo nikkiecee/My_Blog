@@ -9,7 +9,7 @@ class Post < ApplicationRecord
   private
 
   def strip_attributes
-    self.title = title.to_s.strip if title.present?
-    self.content = content.to_s.strip if content.present?
+    self.title = title.strip.presence if title.is_a?(String) && title.present?
+self.content = content.strip.presence if content.is_a?(String) && content.present?
   end
 end

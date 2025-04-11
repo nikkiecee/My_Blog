@@ -23,7 +23,7 @@ class CommentsControllerTest < ActionDispatch::IntegrationTest
           post_id: posts(:one).id                 # assuming you have fixtures
         }
       }
-      puts assigns(:comment).errors.full_messages # great for debugging!
+      # puts assigns(:comment).errors.full_messages # great for debugging!
     end
 
     assert_redirected_to comment_url(Comment.last)
