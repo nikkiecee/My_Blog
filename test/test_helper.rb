@@ -2,6 +2,13 @@ ENV["RAILS_ENV"] ||= "test"
 require_relative "../config/environment"
 require "rails/test_help"
 
+# 👇 Add this block to support assigns/assert_template/etc.
+class ActionController::TestCase
+  include Rails::Controller::Testing::TestProcess
+  include Rails::Controller::Testing::TemplateAssertions
+  include Rails::Controller::Testing::Integration
+end
+
 module ActiveSupport
   class TestCase
     # Run tests in parallel with specified workers
