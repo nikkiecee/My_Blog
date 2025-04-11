@@ -22,6 +22,7 @@ class CommentsController < ApplicationController
   # POST /comments or /comments.json
   def create
     @comment = Comment.new(comment_params)
+    @comment.content = @comment.content.strip if @comment.content.present?
 
     respond_to do |format|
       if @comment.save
@@ -36,8 +37,11 @@ class CommentsController < ApplicationController
 
   # PATCH/PUT /comments/1 or /comments/1.json
   def update
+    @comment.assign_attributes(comment_params)
+    @comment.content = @comment.content.strip if @comment.content.present?
+
     respond_to do |format|
-      if @comment.update(comment_params)
+      if @comment.save
         format.html { redirect_to @comment, notice: "Comment was successfully updated." }
         format.json { render :show, status: :ok, location: @comment }
       else
@@ -58,9 +62,10 @@ class CommentsController < ApplicationController
   end
 
   private
+
     # Use callbacks to share common setup or constraints between actions.
     def set_comment
-      @comment = Comment.find(params.expect(:id))
+      @comment = Comment.find(params[:id])  # ✅ fixed here
     end
 
     # Only allow a list of trusted parameters through.
