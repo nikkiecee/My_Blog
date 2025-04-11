@@ -14,7 +14,7 @@ class CommentsTest < ApplicationSystemTestCase
     visit comments_url
     click_on "New comment"
 
-    fill_in "Body", with: @comment.body
+    fill_in "Content", with: "Test comment content"
     fill_in "Post", with: @comment.post_id
     click_on "Create Comment"
 
@@ -22,11 +22,11 @@ class CommentsTest < ApplicationSystemTestCase
     click_on "Back"
   end
 
-  test "should update Comment" do
+  test "should update comment" do
     visit comment_url(@comment)
     click_on "Edit this comment", match: :first
 
-    fill_in "Body", with: @comment.body
+    fill_in "Content", with: "Updated comment content"
     fill_in "Post", with: @comment.post_id
     click_on "Update Comment"
 
@@ -34,7 +34,7 @@ class CommentsTest < ApplicationSystemTestCase
     click_on "Back"
   end
 
-  test "should destroy Comment" do
+  test "should destroy comment" do
     visit comment_url(@comment)
     click_on "Destroy this comment", match: :first
 
