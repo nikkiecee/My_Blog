@@ -14,7 +14,7 @@ class CommentsTest < ApplicationSystemTestCase
     visit comments_url
     click_on "New comment"
 
-    fill_in "Content", with: "Test comment content"
+    fill_in "Body", with: "Test comment content"  # Make sure this matches the form
     fill_in "Post", with: @comment.post_id
     click_on "Create Comment"
 
@@ -26,7 +26,7 @@ class CommentsTest < ApplicationSystemTestCase
     visit comment_url(@comment)
     click_on "Edit this comment", match: :first
 
-    fill_in "Content", with: "Updated comment content"
+    fill_in "Body", with: "Updated comment content"  # Ensure this matches the form
     fill_in "Post", with: @comment.post_id
     click_on "Update Comment"
 
