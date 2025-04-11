@@ -22,7 +22,7 @@ class CommentsController < ApplicationController
   # POST /comments or /comments.json
   def create
     @comment = Comment.new(comment_params)
-    @comment.content = @comment.content.strip.presence if @comment.content.is_a?(String) && @comment.content.present?
+    @comment.content = @comment.content.to_s.strip.presence
 
     respond_to do |format|
       if @comment.save
@@ -38,7 +38,7 @@ class CommentsController < ApplicationController
   # PATCH/PUT /comments/1 or /comments/1.json
   def update
     @comment.assign_attributes(comment_params)
-    @comment.content = @comment.content.strip if @comment.content.is_a?(String) && @comment.content.present?
+    @comment.content = @comment.content.to_s.strip.presence
     respond_to do |format|
       if @comment.save
         format.html { redirect_to @comment, notice: "Comment was successfully updated." }
