@@ -39,16 +39,13 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should destroy post" do
-    post = posts(:one)  # assuming you have a fixture for posts
-    comment = post.comments.create(content: "Sample comment") # create a related comment
+    post = posts(:one)
+    post.comments.create!(content: "Sample comment")  # make sure it's saved
 
     assert_difference("Post.count", -1) do
-      delete post_url(post)
-    end
-
-    # Ensure the associated comment is also deleted if you use dependent: :destroy
-    assert_difference("Comment.count", -1) do
-      delete post_url(post)
+      assert_difference("Comment.count", -2) do
+        delete post_url(post)
+      end
     end
   end
 end
